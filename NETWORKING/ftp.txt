@@ -1,0 +1,111 @@
+FTP Server Setup
+Install vsftpd:
+
+Use the following command to install vsftpd:
+bash
+Copy code
+sudo apt-get install vsftpd
+Start vsftpd:
+
+Start the vsftpd service with:
+bash
+Copy code
+sudo systemctl start vsftpd
+Enable vsftpd at Boot:
+
+To enable vsftpd to start at boot, use:
+bash
+Copy code
+sudo systemctl enable vsftpd
+Check vsftpd Status:
+
+Verify that vsftpd is running:
+bash
+Copy code
+sudo systemctl status vsftpd
+Configure vsftpd:
+
+Edit the vsftpd configuration file located at /etc/vsftpd.conf:
+bash
+Copy code
+sudo nano /etc/vsftpd.conf
+Ensure the following lines are set to allow FTP uploads:
+bash
+Copy code
+write_enable=YES
+local_umask=022
+chroot_local_user=YES
+allow_writeable_chroot=YES
+Restart vsftpd:
+
+Apply the changes by restarting vsftpd:
+bash
+Copy code
+sudo systemctl restart vsftpd
+FTP Client Setup
+Install FTP Client:
+
+If not already installed, use the following command to install an FTP client:
+bash
+Copy code
+sudo apt-get install ftp
+Connect to FTP Server:
+
+To connect to the FTP server, use the following command:
+bash
+Copy code
+ftp <server_ip>
+Replace <server_ip> with the actual IP address of the FTP server.
+Login:
+
+Enter the username and password when prompted.
+File Transfer Commands
+Download a File:
+
+bash
+Copy code
+get <filename>
+Replace <filename> with the name of the file you want to download.
+Upload a File:
+
+bash
+Copy code
+put <filename>
+Replace <filename> with the name of the file you want to upload.
+List Files:
+
+bash
+Copy code
+ls
+This will list the files in the current directory on the FTP server.
+Change Directory:
+
+bash
+Copy code
+cd <directory_name>
+Replace <directory_name> with the name of the directory you want to change to.
+Example FTP Session
+Connect to the FTP Server:
+
+bash
+Copy code
+ftp 192.168.1.41
+Login:
+
+Enter the FTP username and password.
+Upload a File:
+
+bash
+Copy code
+put myfile.txt
+Download a File:
+
+bash
+Copy code
+get serverfile.txt
+Exit the FTP Session:
+
+bash
+Copy code
+bye
+Following these steps will allow you to set up and use FTP for file sharing between different IP addresses, whether they are localhost or other machines in the network.
